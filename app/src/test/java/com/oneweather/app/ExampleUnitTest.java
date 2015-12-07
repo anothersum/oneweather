@@ -1,4 +1,4 @@
-package com.xiaoshaobinoutlook.oneweather;
+package com.oneweather.app;
 
 import org.junit.Test;
 
