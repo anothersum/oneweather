@@ -103,34 +103,43 @@ public class Utility {
 
 			JSONArray jsonArray = data.getJSONArray("forecast");
 			JSONObject  weatherInfo = jsonArray.getJSONObject(0);
-			String weatherCode = weatherInfo.getString("type");
+		//	String weatherCode = weatherInfo.getString("type");
 			String temp1 = weatherInfo.getString("high");
 			String temp2 = weatherInfo.getString("low");
 			String weatherDesp = weatherInfo.getString("type");
 			String publishTime = weatherInfo.getString("date");
 
+			JSONObject  weatherInfo1 = jsonArray.getJSONObject(1);
+			String weatherDesp1 = weatherInfo1.getString("type");
+			String temp11 = weatherInfo1.getString("high");
+			String temp21 = weatherInfo1.getString("low");
+		//	String weatherDesp = weatherInfo1.getString("type");
 
-			saveWeatherInfo(context, cityName, "weatherCode", temp1, temp2,
-					weatherDesp, publishTime);
+			saveWeatherInfo(context, cityName, temp1, temp2,
+					weatherDesp, publishTime,weatherDesp1,temp11,temp21);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static void saveWeatherInfo(Context context, String cityName,
-									   String weatherCode, String temp1, String temp2, String weatherDesp,
-									   String publishTime) {
+									    String temp1, String temp2, String weatherDesp,
+									   String publishTime, String weatherDesp1, String temp11, String temp21) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日", Locale.CHINA);
 		SharedPreferences.Editor editor = PreferenceManager
 				.getDefaultSharedPreferences(context).edit();
 		editor.putBoolean("city_selected", true);
 		editor.putString("city_name", cityName);
-		editor.putString("weather_code", weatherCode);
+		//editor.putString("weather_code", weatherCode);
 		editor.putString("temp1", temp1);
 		editor.putString("temp2", temp2);
 		editor.putString("weather_desp", weatherDesp);
 		editor.putString("publish_time", publishTime);
-		editor.putString("current_date", sdf.format(new Date()));
+		editor.putString("current_date", sdf.format(new Date())+"今天");
+		editor.putString("temp11", temp11);
+		editor.putString("temp21", temp21);
+		editor.putString("weather_desp1", weatherDesp1);
+		editor.putString("current_date1", "明天");
 		editor.commit();
 	}
 }

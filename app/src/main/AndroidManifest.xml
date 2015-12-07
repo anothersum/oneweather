@@ -26,7 +26,8 @@
         </activity>
         <activity android:name="com.oneweather.app.activity.WeatherActivity" >
         </activity>
-
+        <activity android:name="com.oneweather.app.activity.UpdateSetActivity" >
+        </activity>
         <service android:name="com.oneweather.app.service.AutoUpdateService" >
         </service>
 

@@ -46,11 +46,28 @@ public class WeatherActivity extends Activity implements OnClickListener {
 	/**
 	 * 用于显示当前日期
 	 */
+	private TextView currentDateText1;
+
+	private TextView weatherDespText1;
+	/**
+	 * 用于显示气温1
+	 */
+	private TextView temp1Text1;
+	/**
+	 * 用于显示气温2
+	 */
+	private TextView temp2Text1;
+	/**
+	 * 用于显示当前日期
+	 */
 	private TextView currentDateText;
+
 	// 切换城市
 	private Button switchCity;
 	// 更新天气
 	private Button refreshWeather;
+	private Button updateSet;
+	private Button camOpen;
 
 
 	@Override
@@ -66,10 +83,20 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		temp1Text = (TextView) findViewById(R.id.temp1);
 		temp2Text = (TextView) findViewById(R.id.temp2);
 		currentDateText = (TextView) findViewById(R.id.current_date);
+
+		weatherDespText1 = (TextView) findViewById(R.id.weather_desp1);
+		temp1Text1 = (TextView) findViewById(R.id.temp11);
+		temp2Text1 = (TextView) findViewById(R.id.temp21);
+		currentDateText1 = (TextView) findViewById(R.id.current_date1);
+
 		switchCity = (Button) findViewById(R.id.switch_city);
 		refreshWeather = (Button) findViewById(R.id.refresh_weather);
+		updateSet = (Button) findViewById(R.id.set_update);
+		camOpen = (Button) findViewById(R.id.cam_open);
 		switchCity.setOnClickListener(this);
 		refreshWeather.setOnClickListener(this);
+		updateSet.setOnClickListener(this);
+		camOpen.setOnClickListener(this);
 		String countyCode = getIntent().getStringExtra("county_code");
 		if (!TextUtils.isEmpty(countyCode)) {
 			// 有县级代号时就去查询天气
@@ -105,7 +132,15 @@ public class WeatherActivity extends Activity implements OnClickListener {
 					queryWeatherInfo(weatherCode);
 				}
 				break;
-
+			case R.id.set_update:
+				Intent intent1 = new Intent(this, UpdateSetActivity.class);
+				startActivity(intent1);
+				finish();
+				break;
+			case R.id.cam_open:
+				Intent intent2 = new Intent(this, CamOpen.class);
+				startActivity(intent2);
+				break;
 			default:
 				break;
 		}
@@ -189,6 +224,12 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		weatherDespText.setText(prefs.getString("weather_desp", ""));
 		publishText.setText(prefs.getString("publish_time", "") + "发布");
 		currentDateText.setText(prefs.getString("current_date", ""));
+
+		temp1Text1.setText(prefs.getString("temp11", ""));
+		temp2Text1.setText(prefs.getString("temp21", ""));
+		weatherDespText1.setText(prefs.getString("weather_desp1", ""));
+		currentDateText1.setText(prefs.getString("current_date1", ""));
+
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
 		//激活服务
