@@ -138,8 +138,9 @@ public class WeatherActivity extends Activity implements OnClickListener {
 				finish();
 				break;
 			case R.id.cam_open:
-				Intent intent2 = new Intent(this, CamOpen.class);
+				Intent intent2 = new Intent(this, CamOpenActivity.class);
 				startActivity(intent2);
+				finish();
 				break;
 			default:
 				break;

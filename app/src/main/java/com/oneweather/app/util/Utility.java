@@ -134,8 +134,8 @@ public class Utility {
 		editor.putString("temp1", temp1);
 		editor.putString("temp2", temp2);
 		editor.putString("weather_desp", weatherDesp);
-		editor.putString("publish_time", publishTime);
-		editor.putString("current_date", sdf.format(new Date())+"今天");
+		editor.putString("publish_time", sdf.format(new Date()));
+		editor.putString("current_date", "今天");
 		editor.putString("temp11", temp11);
 		editor.putString("temp21", temp21);
 		editor.putString("weather_desp1", weatherDesp1);
