@@ -115,8 +115,8 @@ public class Utility {
 			String temp21 = weatherInfo1.getString("low");
 		//	String weatherDesp = weatherInfo1.getString("type");
 
-			saveWeatherInfo(context, cityName, temp1, temp2,
-					weatherDesp, publishTime,weatherDesp1,temp11,temp21);
+			saveWeatherInfo(context, cityName, temp1.substring(2), temp2.substring(2),
+					weatherDesp, publishTime,weatherDesp1,temp11.substring(2),temp21.substring(2));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
